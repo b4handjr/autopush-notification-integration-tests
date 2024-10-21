@@ -9,10 +9,11 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 
 ENV ENV="dev"
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     musl-dev \
-    xvfb\
+    xvfb \
+    xauth \
     curl \
     wget \
     gnupg2 \
@@ -38,7 +39,6 @@ RUN apt-get update && apt-get install -y \
     libgconf-2-4 \
     libfontconfig1 \
     libdbus-glib-1-2 \
-    xvfb \
     && apt-get clean
 
 # Download and install the latest Firefox release
